@@ -11,7 +11,7 @@ class product {
   }
 }
 
-// Creo la clase productManager con su atributo products como un arreglo vacío
+// Creo la clase productManager con su atributo products como un arreglo vacío y los distintos métodos
 class productManager {
   static idProducto = 1
   
@@ -45,13 +45,13 @@ class productManager {
   }
 }
 
-// Creamos una nueva instancia de productManager 
+// Creo una nueva instancia de productManager 
 const nP = new productManager()
 
-// LLamamos al método getproducts y nos devuelve un array vacío
+// LLamo al método getproducts y nos devuelve un array vacío
 console.log(nP.getProducts())
 
-// Llamamos al método addProduct con los siguientes parámetros, el id se genera de forma automática 
+// Llamo al método addProduct con los siguientes parámetros, el id se genera de forma automática 
 const p1 = nP.addProduct({
   title: 'producto prueba',
   description:'Este es un producto prueba',
@@ -61,14 +61,14 @@ const p1 = nP.addProduct({
   stock:25
 })
 
-// Llamamos al método getProducts dentro de un console.log nuevamente para ver el nuevo item creado
+// Llamo al método getProducts dentro de un console.log nuevamente para ver el nuevo item creado
 console.log(nP.getProducts())
 
-// Llamamos al método getProductsById dentro de un console.log para buscar un producto por Id
-// Sino encuentra coincidenca nos devuelve un error detallando el mismo
+// Llamo al método getProductsById dentro de un console.log para buscar un producto por Id
+// sino encuentra coincidenca me devuelve un error detallando el mismo
 console.log(nP.getProductsById(1))
 
-// Llamamos nuevamente al método addProduct, pasándole la misma información, debería darnos un error porque no
+// Llamo nuevamente al método addProduct, pasándole la misma información, debería darme un error porque no
 // se puede repetir el code del producto
 const p2 = nP.addProduct({
   title: 'producto prueba',
