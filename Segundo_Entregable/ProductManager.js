@@ -12,18 +12,6 @@ class product {
     this.code = code
     this.stock = stock
   }
-
-  asObject() {
-    return {
-      id: this.id,
-      title: this.title,
-      description: this.description,
-      price: this.price,
-      thumbnail: this.thumbnail,
-      code: this.code,
-      stock: this.stock
-    }
-  }
 }
 
 // Creo la clase productManager con sus atributos, products es un arreglo vacío
