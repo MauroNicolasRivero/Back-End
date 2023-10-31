@@ -1,0 +1,73 @@
+[
+    {
+        "imagen": "🍔",
+        "id": 1,
+        "nombre": "Simple",
+        "ingredientes": "Medallón de Carne de 150 gr,Queso Muzzarella,Salsa Barbacoa",
+        "precio": 1000
+    },
+    {
+        "imagen": "🍔",
+        "id": 2,
+        "nombre": "Clásica JyQ",
+        "ingredientes": "Medallón de Carne de 150 gr,Queso Muzzarella,Jamón Cocido,Mostaza",
+        "precio": 1200
+    },
+    {
+        "imagen": "🍔",
+        "id": 3,
+        "nombre": "Clásica LyT",
+        "ingredientes": "Medallón de Carne de 150 gr,Lechuga, Tomates,Mayonesa de Ajo",
+        "precio": 1300
+    },
+    {
+        "imagen": "🍔",
+        "id": 4,
+        "nombre": "Completa",
+        "ingredientes": "Medallón de Carne de 150 gr,Queso Muzzarella,Jamón Cocido,Lechuga,Tomates, Salsa Aioli",
+        "precio": 1500
+    },
+    {
+        "imagen": "🍔",
+        "id": 5,
+        "nombre": "Clásica ChyP",
+        "ingredientes": "Medallón de Carne de 150 gr,Queso Cheddar,Panceta Crocante, Salsa Ketchup",
+        "precio": 1500
+    },
+    {
+        "imagen": "🍔",
+        "id": 6,
+        "nombre": "Cásica PyPA",
+        "ingredientes": "Medallón de Carne de 150 gr, Queso Provoleta,Pimientos Ahumados,Salsa Barbacoa",
+        "precio": 1600
+    },
+    {
+        "imagen": "🍔",
+        "id": 7,
+        "nombre": "Full Tasty",
+        "ingredientes": "Medallón de Carne de 150 gr,Queso Azul,Rucula,Tomates Confitados,Aceto Balsámico",
+        "precio": 1700
+    },
+    {
+        "imagen": "🍔",
+        "id": "8",
+        "nombre": "Sabores",
+        "ingredientes": "Medallón de Carne de 150 gr,Queso Muzzarella,Jamón Cocido,Lechuga,Tomates,Huevo,Salsa Aioli",
+        "precio": 1800
+    },
+    {
+        "imagen": "🍔",
+        "id": 9,
+        "nombre": "Lola",
+        "ingredientes": "Medallón de Carne de 150 gr,Queso Mozzarella,Pepinillos,Cebolla Morada,Pimientos Ahumados,Salsa Alioli",
+        "precio": 2000
+    },
+    {
+        "imagen": "🍔",
+        "id": 10,
+        "nombre": "Lola XL",
+        "ingredientes": "Doble Medallón de Carne de 150 gr,Queso Mozzarella,Pepinillos,Cebolla Morada,Pimientos Ahumados,Salsa Alioli",
+        "precio": 2200
+    }
+
+] 
