@@ -1,79 +1,83 @@
-import { Products } from "../models/products.js";
-import { prods_json } from "../config.js";
 import fs from 'fs/promises'
+import { Products } from '../models/products.js'
 
-export class productsManager {
-    static idProducto = 11 // Arranca desde el número 11 porque ya había precargado 10 artículos
+export class ProductsManager {
     constructor(path) {
         this.path = path
-        this.Products = []
+        this.products  = []
     }
-    static getIdNewProd() {
-        return productsManager.idProducto++
+
+    getIdNewProd() {
+        if (this.products.length > 0) {
+            console.log(this.products.length)
+            return this.products[this.products.length - 1].id + 1
+        } else {
+            return 1
+        }           
+    }
+
+    async readProducts() {
+        const json = await fs.readFile(this.path,'utf-8')
+        const array = JSON.parse(json)
+        this.products = array.map(i => new Products(i))
+    }
+
+    async writeProducts() {
+        const json = JSON.stringify(this.products,null,2)
+        await fs.writeFile(this.path,json)
     }
 
     async getAll(query = {}) {
-        const json = await fs.readFile(this.path, 'utf-8')
+        await this.readProducts()
         if ((query.limit) >= 1 && (query.limit) <= 10) {
-            return JSON.parse(json).filter(p => p.id <= query.limit)
+            return this.products.filter(p => p.id <= query.limit)
 
         } else if ((query.limit) < 0 || (query.limit) > 10) {
             throw new Error ("Por favor ingresar un numero del 1 a 10")
 
         }   
-            return JSON.parse(json)
+            return this.products
     }
     
     async getById(id) {
-        const json = await fs.readFile(this.path,'utf-8')
-        const productos = JSON.parse(json)
-        const buscado = productos.find(p => p.id === id)
+        await this.readProducts()
+        const buscado = this.products.find(p => p.id === id)
         if (!buscado) throw new Error (`no se encontró el producto con el id ${id}`)
         return buscado
     }
 
-    async writeProducts() {
-        const productsJson = JSON.stringify(this.Products, null, 2)
-        await fs.writeFile(this.path, productsJson)
-    }
-
-    async addProducts(datos) {
-        const json = await fs.readFile(this.path, 'utf-8')
-        const idNvo = productsManager.getIdNewProd()
-        const productoNuevo = new Products({ id: idNvo, datos })
-        const codeRepeat = this.Products.find(p => p.id === productoNuevo.id)
-        if (codeRepeat) {
-          throw new Error(`El id ${productoNuevo.id} ya esta asignado, por favor verificar información`)
-        }
-        this.Products.push(productoNuevo)
+    async addProducts({title,description,code,price,status,stock,category,thumbnails}) {
+        await this.readProducts()
+        const id = this.getIdNewProd()
+        console.log(id)
+        const producto = new Products({id,title,description,code,price,status,stock,category,thumbnails})
+        this.products.push(producto)
         await this.writeProducts()
-        return productoNuevo
+        return producto
     }
 
-    async updateProducts(pid, campo) {
-        const json = await fs.readFile(this.path, 'utf-8')
-        const productos = JSON.parse(json)
-        const index = productos.find(p => p.id === pid)
+    async updateProducts(id,prodData) {
+        await this.readProducts()
+        const index = this.products.findIndex(p => p.id === id)
         if (index !== -1) {
-          const nuevoProd = new Products({ pid, campo })
-          this.Products[index] = nuevoProd
-          await this.writeProducts()
-          return nuevoProd
+            const nuevoProd = new Products({id, ...this.products[index], ...prodData})
+            this.products[index] = nuevoProd
+            await this.writeProducts()
+            return nuevoProd
         } else {
-          throw new Error('error al actualizar: usuario no encontrado')
+            throw new Error ('error al actualizar: producto no encontrado')
         }
     }
 
-    async deleteProducts(pid) {
-        const json = await fs.readFile(this.path, 'utf-8')
-        const productos = JSON.parse(json)
-        const index = productos.find(p => p.id === pid)
+    async deleteProducts(id) {
+        await this.readProducts()
+        const index = this.products.findIndex(p => p.id === id)
         if (index !== -1) {
-          const arrayWithDeletes = this.Products.splice(index, 1)
-          await this.writeProducts()
-          return arrayWithDeletes[0]
+            const arrayDeletes = this.products.splice(index,1)
+            await this.writeProducts()
+            return arrayDeletes[0]
         } else {
-          throw new Error('error al borrar: usuario no encontrado')
+            throw new Error ('error al borrar: producto no encontrado')
         }
-      }
+    }
 }
