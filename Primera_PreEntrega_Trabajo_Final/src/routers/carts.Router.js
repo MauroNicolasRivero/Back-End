@@ -36,9 +36,8 @@ cartsRouter.post('/', async (req,res) => {
 cartsRouter.post('/:cid/products/:pid', async (req,res) => {
     const cid = parseInt(req.params.cid)
     const pid = parseInt(req.params.pid)
-    const data = req.body
     try {
-        const productAgregado = await cM.addProductCart(cid,pid,data)
+        const productAgregado = await cM.addProductCart(cid,pid)
         res.json(productAgregado)
     } catch (error) {
         res.json({
