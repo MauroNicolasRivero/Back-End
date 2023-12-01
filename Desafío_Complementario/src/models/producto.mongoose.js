@@ -1,10 +1,3 @@
-/*
-La carpeta Models albergará el esquema que nosotros propongamos para nuestro documento
-Para crearlo debemos importar Schema y model de mongoose
-Para poder usar este modelo en el manager de productos debemos exportarlo seteando 
-el nombre de la coleccion a la cual vamos a agregar los documentos creados por el manager
-*/
-
 import { randomUUID } from 'crypto'
 import { Schema, model } from "mongoose";
 
