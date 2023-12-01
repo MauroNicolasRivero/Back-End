@@ -1,22 +1,14 @@
-/*
-La carpeta routes albergará las rutas que vamos a ir creando para usar como endpoints en las 
-tareas de CRUD que necesitemos hacer sobre nuetros productos
-Necesitamos importar Router, json y urlencoded de express y el manager que manejara esas
-peticiones desde aqui a los servicios donde está escrita la lógica
-Necesitamos exportar el archivo para que sea usado por el middleware app del main
-*/
-
 import { Router, json, urlencoded } from "express";
 import { productosManager } from "../services/productosManager.js";
 
 export const apiProductoRouter = Router()
 
-apiProductoRouter.use(json())                            // middleware para leer archivos json
-apiProductoRouter.use(urlencoded({ extended: true }))    // middleware para leer formularios 
+apiProductoRouter.use(json())                            
+apiProductoRouter.use(urlencoded({ extended: true }))    
 
-apiProductoRouter.get('/productos', async (req,res) => { // productos es el endpoint, recordar que tiene el prefijo "Api" 
+apiProductoRouter.get('/productos', async (req,res) => { 
     try {
-        const productos = await productosManager.consultar() // consultar es un metodo creado por mi en services
+        const productos = await productosManager.consultar() 
         res.json(productos)
     } catch (error) {
         res.status(500).json({
@@ -28,7 +20,7 @@ apiProductoRouter.get('/productos', async (req,res) => { // productos es el endp
 
 apiProductoRouter.get('/productos/:id', async (req,res) => {
     try {
-        const producto = await productosManager.consultarPorId(req.params.id) // aca le paso directamente el params
+        const producto = await productosManager.consultarPorId(req.params.id)
         res.json(producto)
     } catch (error) {
         res.status(404).json({
@@ -40,8 +32,8 @@ apiProductoRouter.get('/productos/:id', async (req,res) => {
 
 apiProductoRouter.post('/productos', async (req,res) => {
     try {
-        const datosProducto = req.body // aca hice diferente, guarde el valor del body en una variable y la pase
-        const producto = await productosManager.registrar(datosProducto) // como argumento aqui
+        const datosProducto = req.body
+        const producto = await productosManager.registrar(datosProducto)
         res.status(201).json(producto)
     } catch (error) {
         res.status(400).json({
