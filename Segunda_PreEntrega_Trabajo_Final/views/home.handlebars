@@ -1,0 +1,10 @@
+<section class="productos">
+  <h1>Productos</h1>
+  {{#if hayProductos}}
+  <ul>{{#each productos}}</ul>
+  <li>{{this.title}}</li>
+  {{/each}}
+  {{else}}
+  Aun no hay productos cargados.
+  {{/if}}
+</section>

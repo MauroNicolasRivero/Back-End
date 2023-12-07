@@ -1,0 +1,35 @@
+[
+  {
+    "id": 1,
+    "title": "Simple",
+    "description": "Medallón de Carne de 150 gr,Queso Muzzarella,Salsa Barbacoa",
+    "code": "bur1",
+    "price": 1000,
+    "status": true,
+    "stock": 50,
+    "category": "burguer",
+    "thumbnails": "🍔"
+  },
+  {
+    "id": 2,
+    "title": "Doble",
+    "description": "Doble medallón de Carne de 150 gr,Queso Muzzarella,Salsa Barbacoa",
+    "code": "bur2",
+    "price": 1500,
+    "status": true,
+    "stock": 50,
+    "category": "burguer",
+    "thumbnails": "🍔"
+  },
+  {
+    "id": 3,
+    "title": "Triple",
+    "description": "Triple medallón de Carne de 150 gr,Queso Muzzarella,Salsa Barbacoa",
+    "code": "bur3",
+    "price": 2000,
+    "status": true,
+    "stock": 50,
+    "category": "burguer",
+    "thumbnails": "🍔"
+  }
+]
