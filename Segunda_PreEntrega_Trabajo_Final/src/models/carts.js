@@ -5,7 +5,7 @@ const collection = 'carritos'
 
 const carritoSchema = new Schema({
     _id: { type:String, default: randomUUID },
-    products: [{ type:String, required: true }]
+    products: [{}]
    },{
     strict: 'throw',
     versionKey: false,
