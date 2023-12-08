@@ -56,12 +56,12 @@ class cartsManager {
             return cart
             //this.carts.push(cart)
         } else {
-            const product = cartID.products.findById(pid).lean()
+            const product = cartID.products.find(p => p._id === pid)
             if (product) {
                 product.quantity++
+                return product
             } else {
                 const array = {id:pid, quantity:1}
-                cartID.this.carts.push(array)
                 return array
             }
         } //await this.writeCarts()
