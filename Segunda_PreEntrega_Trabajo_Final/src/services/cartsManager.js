@@ -59,10 +59,15 @@ class cartsManager {
             const product = cartID.products.find(p => p._id === pid)
             if (product) {
                 product.quantity++
-                return product
+                console.log("Encontro el carrito y el producto, sumo uno?",product)
+                const optionTwo = await dbCarrito.findByIdAndUpdate(cartID,{$set: {products:product}})
+                // esta sobreescribiendo el articulo cuando tiene que sumar sobre uno que ya existe
+                return optionTwo
             } else {
-                const array = {id:pid, quantity:1}
-                return array
+                const array = {_id:pid, quantity:1}
+                const optionThree = await dbCarrito.findByIdAndUpdate(cartID,{$push: {products:array}})
+                //cartID.products.push(array)
+                return optionThree
             }
         } //await this.writeCarts()
     } 
