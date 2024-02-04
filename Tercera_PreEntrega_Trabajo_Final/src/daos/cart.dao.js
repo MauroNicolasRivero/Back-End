@@ -6,24 +6,18 @@ const collection = "carritos";
 const cartSchema = new Schema(
   {
     _id: { type: String, default: randomUUID },
-    products: {
-      type: [
-        {
-          _id: { type: String, ref: 'hamburguesas'},
-          quantity: { type: Number, min: 1, default: 1}
-        }
-      ]
-    }
+    products: [{
+    _id: { type: String, ref: 'hamburguesas'}, 
+    quantity: { type: Number, min: 1, default: 1}}]
   },
   {
     strict: "throw",
     versionKey: false,
   });
 
-cartSchema.pre('find', function (next) {
-  this.populate('hamburguesas._id')
-  next()
-})
+/*cartSchema.pre('find', function() {
+  this.populate('products._id')
+})*/
 
 const cartModel = model(collection, cartSchema);
 
@@ -31,7 +25,7 @@ const cartModel = model(collection, cartSchema);
 
 export class CartDao {
   async getById(id) {
-    const buscado = await cartModel.findById(id).lean();
+    const buscado = await cartModel.findById(id).populate('products._id').lean(); 
     if (!buscado) {
       throw new Error(`no se encontró el carrito con el id ${id}`);
     }
@@ -71,5 +65,13 @@ export class CartDao {
         return optionThree;
       }
     }
+  }
+
+  async sale(cid) {
+    const cartBuscado = await cartModel.findById(cid).populate('products._id');
+    if (!cartBuscado) {
+      throw new Error(`no se encontró el carrito con el id ${cid}`);
+    }
+   
   }
 }

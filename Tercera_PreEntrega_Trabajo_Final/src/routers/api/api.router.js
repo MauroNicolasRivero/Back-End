@@ -5,7 +5,6 @@ import { sessionsRouter } from './sessions.router.js'
 import { errorHandler } from '../../middlewares/errorHandler.js'
 import { cartsRouter } from "./carts.router.js";
 import { productsRouter } from "./products.router.js";
-import { ticketsRouter } from './tickets.router.js'
 
 export const apiRouter = Router()
 
@@ -19,6 +18,5 @@ apiRouter.use('/sessions', sessionsRouter)
 
 apiRouter.use('/carts', cartsRouter)
 apiRouter.use('/products', productsRouter)
-apiRouter.use('/tickets', ticketsRouter)
 
-apiRouter.use(errorHandler) // lo movi, estaba debajo de metodos personalizados
+apiRouter.use(errorHandler) 

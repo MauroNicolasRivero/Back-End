@@ -22,8 +22,10 @@ const ticketModel = model(collection, ticketSchema);
 // ---------------------------------------------------------------
 
 export class TicketDao {
-  async sale({ code, purchase_datetime, amount, purchaser }) {
+  async sale({ amount, purchaser }) {
+
     const _id = randomUUID();
+    const code = randomUUID();
     const ticket = await ticketModel.create({
       _id,
       code,

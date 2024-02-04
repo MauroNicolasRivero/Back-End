@@ -38,5 +38,18 @@ export async function postControllerwithProd(req,res,next) {
             status: 'error',
             message: error.message
         })
-    }  
+    } 
+}
+
+export async function postSaleController(req,res,next) {
+    const cid = req.params.cid
+    try {
+        const cartElegido = await cartDao.sale(cid)
+        res.json(cartElegido)
+    } catch (error) {
+        res.json({
+            status: 'error',
+            message: error.message
+        })
+    }
 }
