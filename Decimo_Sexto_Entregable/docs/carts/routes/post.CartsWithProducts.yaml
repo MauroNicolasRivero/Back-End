@@ -1,0 +1,24 @@
+paths:
+  /api/carts/{cid}/products/{pid}:
+    post:
+      summary: Crea un nuevo carrito con un array de productos.
+      tags:
+        - Carrito
+      parameters:
+      - name: cid
+        in: path
+        description: parametro de ruta con el ID del carrito.
+        required: true
+        type: string
+      - name: pid
+        in: path
+        description: parametro de ruta con el ID del producto.
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Carrito creado con productos.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/requestBodies/CreateCartsWithProducts'

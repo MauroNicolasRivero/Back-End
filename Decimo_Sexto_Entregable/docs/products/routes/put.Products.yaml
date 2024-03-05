@@ -1,0 +1,27 @@
+paths:
+  /api/products/{id}:
+    put:
+      summary: Modifica el producto existente con el ID dado.
+      tags:
+        - Producto
+      parameters:
+      - name: id
+        in: path
+        description: parametro de ruta con el ID del producto.
+        required: true
+        type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/requestBodies/ModifyProduct'
+      responses:
+        "200":
+          description: El producto modificado.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Products'
+        "404":
+          description: Error de producto no encontrado.

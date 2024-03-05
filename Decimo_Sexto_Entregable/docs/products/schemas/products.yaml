@@ -1,0 +1,52 @@
+components:
+  schemas:
+    Products:
+      type: object
+      required:
+        - id
+        - title
+        - description
+        - code
+        - price
+        - status
+        - stock
+        - category
+        - thumbnails
+      properties:
+        id:
+          type: string
+          description: El id del producto.
+        title:
+          type: string
+          description: Titulo del producto.
+        description:
+          type: string
+          description: Descripcion de los ingredientes del producto.
+        code:
+          type: string
+          description: Codigo del producto.
+        price:
+          type: number
+          description: Precio del producto expresado en pesos.
+        status:
+          type: boolean
+          description: Estatus del producto.
+        stock:
+          type: number
+          description: Cantidad de unidades en stock.
+        category:
+          type: string
+          description: Categoria del producto.
+        thumbnails:
+          type: string
+          description: Array con la informacion para desplegar la imagen del producto.    
+      example:
+        _id: 5f45c9a9-db80-48b4-aa40-c356a817fee8
+        title: Simple
+        description: Simple Medallón de Carne de 150 gr,Queso Muzzarella,Salsa Barbacoa
+        code: bur1
+        price: 1000
+        status: true
+        stock: 50
+        category: burguer
+        thumbnails: [🍔]

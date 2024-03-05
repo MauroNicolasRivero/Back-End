@@ -1,0 +1,17 @@
+components:
+  requestBodies:
+    CreateCarts:
+      type: object
+      required:
+        - id
+        - products
+      properties:
+        id:
+          type: string
+          description: El id del producto.
+        products:
+          type: string
+          description: Array con informacion del carrito.   
+      example:
+        _id: 9b244252-3ce2-4f23-8bc6-45a4cdbb814c
+        products: []

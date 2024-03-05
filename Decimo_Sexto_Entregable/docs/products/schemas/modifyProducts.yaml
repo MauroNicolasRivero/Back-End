@@ -1,0 +1,12 @@
+components:
+  requestBodies:
+    ModifyProduct:
+      type: object
+      required:
+        - Field/s to modify
+      properties:
+        Field/s:
+          type: objet
+          description: Campo/s sujetos a ser modificados.    
+      example:
+        price: 1500
